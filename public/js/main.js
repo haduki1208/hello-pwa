@@ -28,10 +28,10 @@ document
   .querySelector('#localImage')
   .addEventListener('load', onloadLocalImage);
 
-const writeCanvas = (imgElement, height = 150, width = 300) => {
+const writeCanvas = (imgElement, width = 150, height = 300) => {
   const canvas = document.querySelector('#editCanvas');
-  canvas.height = height;
   canvas.width = width;
+  canvas.height = height;
   const ctx = canvas.getContext('2d');
   ctx.drawImage(imgElement, 0, 0);
   return { canvas, ctx };
@@ -57,4 +57,5 @@ const convertTransparentColor2White = imageData => {
 
 const exportImage = canvas => {
   document.querySelector('#editedImage').src = canvas.toDataURL();
+  document.querySelector('#downloadButton').href = canvas.toDataURL();
 };
